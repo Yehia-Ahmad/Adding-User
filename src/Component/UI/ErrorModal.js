@@ -8,7 +8,48 @@ const ErrorModal = (props) => {
   let classes = styles.hidden;
   const onClickHandler = () => {
     classes = styles.hidden;
+    props.invalidData = false;
     return (
+      <>
+        <div className={styles.backdrop} />
+        <Card className={classes}>
+          <header className={styles.header}>
+            <h2>Invalid input</h2>
+          </header>
+          <div className={styles.content}>
+            <p> Please enter a valid name and age (non-empty values).</p>
+          </div>
+          <footer className={styles.actions}>
+            <Button onClick={onClickHandler}>Okay</Button>
+          </footer>
+        </Card>
+      </>
+    );
+  };
+  if (props.invalidData) {
+    classes = styles.modal;
+    console.log(true);
+
+    return (
+      <>
+        <div className={styles.backdrop} />
+        <Card className={classes}>
+          <header className={styles.header}>
+            <h2>Invalid input</h2>
+          </header>
+          <div className={styles.content}>
+            <p> Please enter a valid name and age (non-empty values).</p>
+          </div>
+          <footer className={styles.actions}>
+            <Button onClick={onClickHandler}>Okay</Button>
+          </footer>
+        </Card>
+      </>
+    );
+  }
+  return (
+    <>
+      <div className={styles.backdrop} />
       <Card className={classes}>
         <header className={styles.header}>
           <h2>Invalid input</h2>
@@ -20,38 +61,7 @@ const ErrorModal = (props) => {
           <Button>Okay</Button>
         </footer>
       </Card>
-    );
-  };
-  if (props.invalidData) {
-    classes = styles.modal;
-    console.log(true);
-
-    return (
-      <Card className={classes}>
-        <header className={styles.header}>
-          <h2>Invalid input</h2>
-        </header>
-        <div className={styles.content}>
-          <p> Please enter a valid name and age (non-empty values).</p>
-        </div>
-        <footer className={styles.actions}>
-          <Button onClick={onClickHandler}>Okay</Button>
-        </footer>
-      </Card>
-    );
-  }
-  return (
-    <Card className={classes}>
-      <header className={styles.header}>
-        <h2>Invalid input</h2>
-      </header>
-      <div className={styles.content}>
-        <p> Please enter a valid name and age (non-empty values).</p>
-      </div>
-      <footer className={styles.actions}>
-        <Button>Okay</Button>
-      </footer>
-    </Card>
+    </>
   );
 };
 
