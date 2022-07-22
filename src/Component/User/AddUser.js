@@ -7,6 +7,7 @@ import styles from "./AddUser.module.css";
 const AddUser = (props) => {
   const [enteredUserName, setEnteredUserName] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
+  // const [error, setError] = useState();
   const changeUserNameHandler = (event) => {
     setEnteredUserName(event.target.value);
   };

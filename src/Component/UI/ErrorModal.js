@@ -5,60 +5,21 @@ import Button from "../UI/Button";
 import styles from "./ErrorModal.module.css";
 
 const ErrorModal = (props) => {
-  let classes = styles.hidden;
-  const onClickHandler = () => {
-    classes = styles.hidden;
-    props.invalidData = false;
-    return (
-      <>
-        <div className={styles.backdrop} />
-        <Card className={classes}>
-          <header className={styles.header}>
-            <h2>Invalid input</h2>
-          </header>
-          <div className={styles.content}>
-            <p> Please enter a valid name and age (non-empty values).</p>
-          </div>
-          <footer className={styles.actions}>
-            <Button onClick={onClickHandler}>Okay</Button>
-          </footer>
-        </Card>
-      </>
-    );
+  const closeErrorMassageHanler = () => {
+    props.onConfirm();
   };
-  if (props.invalidData) {
-    classes = styles.modal;
-    console.log(true);
-
-    return (
-      <>
-        <div className={styles.backdrop} />
-        <Card className={classes}>
-          <header className={styles.header}>
-            <h2>Invalid input</h2>
-          </header>
-          <div className={styles.content}>
-            <p> Please enter a valid name and age (non-empty values).</p>
-          </div>
-          <footer className={styles.actions}>
-            <Button onClick={onClickHandler}>Okay</Button>
-          </footer>
-        </Card>
-      </>
-    );
-  }
   return (
     <>
-      <div className={styles.backdrop} />
-      <Card className={classes}>
+      <div onClick={closeErrorMassageHanler} className={styles.backdrop} />
+      <Card className={styles.modal}>
         <header className={styles.header}>
           <h2>Invalid input</h2>
         </header>
         <div className={styles.content}>
-          <p> Please enter a valid name and age (non-empty values).</p>
+          <p> {props.massage} </p>
         </div>
         <footer className={styles.actions}>
-          <Button>Okay</Button>
+          <Button onClick={closeErrorMassageHanler}>Okay</Button>
         </footer>
       </Card>
     </>
