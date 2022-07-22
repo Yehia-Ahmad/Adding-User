@@ -12,6 +12,7 @@ function App() {
   );
 
   const addNewUserHandler = (item) => {
+    //Handel Error Massage
     if (item.name === "" && item.age === "") {
       setError(true);
       return;
@@ -26,10 +27,14 @@ function App() {
       );
       return;
     }
+
+    // Add New User
     setUserList((pervElement) => {
       return [item, ...pervElement];
     });
   };
+
+  //Cancel Error Massage
   const onCloseErrorMassage = () => {
     setError(false);
   };
